@@ -39,7 +39,8 @@ HEADERS += \
     chartpointdialog.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    chartpointdialog.ui
 
 RESOURCES += \
     resources.qrc

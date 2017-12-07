@@ -25,23 +25,18 @@ void ChartView::mouseDoubleClickEvent(QMouseEvent *e)
 {
     if(chartDoc.getSize() <= 0)
         return;
-    QColor c;
-    c.setNamedColor("#ffffff");
-    if(chartDoc.getSize() == 1){
-        //Edit first
-        chartDoc.getPoint(0)->SetColor(c);
-    }
-    else{
+    ChartPointDialog dlg;
+    int count = 0;
+    if(chartDoc.getSize() != 1){
         int xCoord = e->pos().x(), start = 210, count = 0;
-        while(xCoord > start && count < chartDoc.getSize()){
+        while(xCoord > start && count < chartDoc.getSize()-1){
             start+=160;
             count++;
         }
-        if(count == chartDoc.getSize())
-            chartDoc.getPoint(count-1)->SetColor(c);
-        else
-            chartDoc.getPoint(count)->SetColor(c);
     }
-    this->update();
+    dlg.SetValues(chartDoc.getPoint(count));
+    if(dlg.exec() == QDialog::Accepted){
+        this->update();
+    }
 
 }

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include "chartpointdialog.h"
 #include "chartdoc.h"
 
 class ChartView : public QWidget
