@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QColor>
+#include <QPainter>
 
 
 class ChartPoint
@@ -15,9 +16,11 @@ public:
     void SetValue(float);
     void SetColor(QColor);
 
-    inline const QString GetLabel(){ return _label; }
-    inline const float GetValue(){ return _value; }
-    inline const QColor GetColor(){ return _color; }
+    inline QString GetLabel(){ return _label; }
+    inline float GetValue(){ return _value; }
+    inline QColor GetColor(){ return _color; }
+
+    void DrawPoint(QPainter&, int, float);
 
 private:
     QString _label;

@@ -12,10 +12,14 @@ class ChartDoc : public QObject
     Q_OBJECT
 public:
     explicit ChartDoc(QObject *parent = nullptr);
+
     void loadChartFromFile(QString);
     void saveChartToFile(QString);
+    void Draw(QPainter&);
+    float getMaxValue();
 
 signals:
+    void chartDataChanged();
 
 public slots:
 

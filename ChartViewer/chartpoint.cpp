@@ -26,3 +26,9 @@ void ChartPoint::SetColor(QColor color)
 {
     _color = color;
 }
+
+void ChartPoint::DrawPoint(QPainter& p, int index, float percent)
+{
+    p.setBrush(_color);
+    p.drawRect(200*index + 50 + 10*index, 50 + (400-400*percent), 200, 400*percent);
+}

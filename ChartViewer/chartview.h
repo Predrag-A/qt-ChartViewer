@@ -16,6 +16,12 @@ public:
 signals:
 
 public slots:
+    void onChartDataChanged();
+
+protected:
+    void paintEvent(QPaintEvent* e);
+    void mouseDoubleClickEvent(QMouseEvent* e);
+
 };
 
 #endif // CHARTVIEW_H
