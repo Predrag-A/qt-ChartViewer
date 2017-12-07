@@ -9,6 +9,8 @@ ChartDoc::ChartDoc(QObject *parent) : QObject(parent)
 
 void ChartDoc::loadChartFromFile(QString filePath)
 {
+    _points.clear();
+
     QFile f(filePath);
 
     if(f.open(QIODevice::ReadOnly)){
@@ -63,4 +65,9 @@ float ChartDoc::getMaxValue()
         if(_points[i]->GetValue()>max)
             max = _points[i]->GetValue();
     return max;
+}
+
+ChartPoint *ChartDoc::getPoint(int index)
+{
+    return _points[index];
 }

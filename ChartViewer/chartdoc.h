@@ -18,6 +18,7 @@ public:
     void Draw(QPainter&);
     inline int getSize(){ return _points.size(); }
     float getMaxValue();
+    ChartPoint *getPoint(int);
 
 signals:
     void chartDataChanged();

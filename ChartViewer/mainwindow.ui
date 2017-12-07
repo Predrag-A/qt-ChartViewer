@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
+    <width>250</width>
     <height>570</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
+    <width>250</width>
     <height>570</height>
    </size>
   </property>
@@ -25,13 +25,16 @@
   <property name="windowTitle">
    <string>Chart Viewer</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
   <widget class="ChartView" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>250</width>
      <height>21</height>
     </rect>
    </property>
