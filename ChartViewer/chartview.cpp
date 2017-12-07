@@ -14,7 +14,10 @@ void ChartView::onChartDataChanged()
 void ChartView::paintEvent(QPaintEvent *e)
 {
     QPainter p(this);
+    QFont font("Helvetica");
+    font.setPixelSize(20);
     p.setRenderHint(QPainter::Antialiasing);
+    p.setFont(font);
 
     chartDoc.Draw(p);
 }

@@ -19,6 +19,7 @@ void MainWindow::on_actionLoad_triggered()
     QString filePath = QFileDialog::getOpenFileName(this, QString(), QString(), "Text Files (*.txt);;All Files (*.*)");
     if(!filePath.isEmpty()){
         ui->centralWidget->chartDoc.loadChartFromFile(filePath);
+        this->resize(90 + 160*ui->centralWidget->chartDoc.getSize(), 570);
     }
 
 }

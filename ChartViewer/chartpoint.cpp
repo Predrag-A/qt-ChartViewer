@@ -30,5 +30,6 @@ void ChartPoint::SetColor(QColor color)
 void ChartPoint::DrawPoint(QPainter& p, int index, float percent)
 {
     p.setBrush(_color);
-    p.drawRect(200*index + 50 + 10*index, 50 + (400-400*percent), 200, 400*percent);
+    p.drawRect(150*index + 50 + 10*index, 50 + (400-400*percent), 150, 400*percent);
+    p.drawText(150*index + 130 + 10*index - _label.size()*5, 475, _label);
 }

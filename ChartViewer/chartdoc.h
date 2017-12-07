@@ -16,6 +16,7 @@ public:
     void loadChartFromFile(QString);
     void saveChartToFile(QString);
     void Draw(QPainter&);
+    inline int getSize(){ return _points.size(); }
     float getMaxValue();
 
 signals:
