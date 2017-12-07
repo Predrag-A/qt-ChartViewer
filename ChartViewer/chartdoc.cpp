@@ -2,14 +2,14 @@
 
 ChartDoc::ChartDoc(QObject *parent) : QObject(parent)
 {
-    if(_points.size() > 0)
-        for(int i=0;i<_points.size();i++)
-            delete _points[i];
+    if(m_points.size() > 0)
+        for(int i=0;i<m_points.size();i++)
+            delete m_points[i];
 }
 
 void ChartDoc::loadChartFromFile(QString filePath)
 {
-    _points.clear();
+    m_points.clear();
 
     QFile f(filePath);
 
@@ -23,7 +23,7 @@ void ChartDoc::loadChartFromFile(QString filePath)
             QColor c;
             c.setNamedColor(pointList[2]);
 
-            _points.append(new ChartPoint(pointList[0],pointList[1].toDouble(),c));
+            m_points.append(new ChartPoint(pointList[0],pointList[1].toDouble(),c));
             line = in.readLine();
         }
     }
@@ -39,8 +39,8 @@ void ChartDoc::saveChartToFile(QString filePath)
 
         QTextStream out(&f);
 
-        for(int i=0;i<_points.size();i++)
-            out << _points[i]->GetLabel() << "," << _points[i]->GetValue() << "," << _points[i]->GetColor().name() << "\r\n";
+        for(int i=0;i<m_points.size();i++)
+            out << m_points[i]->GetLabel() << "," << m_points[i]->GetValue() << "," << m_points[i]->GetColor().name() << "\r\n";
     }
 
     f.close();
@@ -50,24 +50,32 @@ void ChartDoc::saveChartToFile(QString filePath)
 void ChartDoc::Draw(QPainter& p)
 {
     float max = getMaxValue();
-    for(int i=0;i<_points.size();i++){
-        float percent = _points[i]->GetValue()/max;
-        _points[i]->DrawPoint(p, i, percent);
+    for(int i=0;i<m_points.size();i++){
+        float percent = m_points[i]->GetValue()/max;
+        m_points[i]->DrawPoint(p, i, percent);
     }
 }
 
 float ChartDoc::getMaxValue()
 {
-    if(_points.size() == 0)
+    if(m_points.size() == 0)
         return -1;
-    float max = _points[0]->GetValue();
-    for(int i=1;i<_points.size();i++)
-        if(_points[i]->GetValue()>max)
-            max = _points[i]->GetValue();
+    float max = m_points[0]->GetValue();
+    for(int i=1;i<m_points.size();i++)
+        if(m_points[i]->GetValue()>max)
+            max = m_points[i]->GetValue();
     return max;
 }
 
 ChartPoint *ChartDoc::getPoint(int index)
 {
-    return _points[index];
+    return m_points[index];
+}
+
+void ChartDoc::ChangePoint(int index, QString label, float value, QColor color)
+{
+    m_points[index]->SetLabel(label);
+    m_points[index]->SetColor(color);
+    m_points[index]->SetValue(value);
+    emit chartDataChanged();
 }

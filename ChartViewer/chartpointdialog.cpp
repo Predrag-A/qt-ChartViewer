@@ -6,6 +6,7 @@ ChartPointDialog::ChartPointDialog(QWidget *parent) :
     ui(new Ui::ChartPointDialog)
 {
     ui->setupUi(this);
+    ui->txtValue->setValidator(new QDoubleValidator(0,10000,10,this));
 }
 
 ChartPointDialog::~ChartPointDialog()
@@ -15,19 +16,28 @@ ChartPointDialog::~ChartPointDialog()
 
 void ChartPointDialog::SetValues(ChartPoint *pt)
 {
-    _pt = pt;
-    _oldColor = _pt->GetColor();
-    _oldLabel = _pt->GetLabel();
-    _oldValue = _pt->GetValue();
+    _color = pt->GetColor();
+    _label = pt->GetLabel();
+    _value = pt->GetValue();
 
-    ui->txtColor->setText(_pt->GetColor().name());
-    ui->txtLabel->setText(pt->GetLabel());
-    ui->txtValue->setText(QString::number(pt->GetValue()));
+    ui->txtColor->setText(_color.name());
+    ui->txtLabel->setText(_label);
+    ui->txtValue->setText(QString::number(_value));
 }
 
 void ChartPointDialog::on_pushButton_clicked()
 {
     QColor color = QColorDialog::getColor(Qt::white,this);
     ui->txtColor->setText(color.name());
-    _pt->SetColor(color);
+    _color=color;
+}
+
+void ChartPointDialog::on_txtValue_textChanged(const QString &arg1)
+{
+    _value = ui->txtValue->text().toFloat();
+}
+
+void ChartPointDialog::on_txtLabel_textChanged(const QString &arg1)
+{
+    _label = ui->txtLabel->text();
 }

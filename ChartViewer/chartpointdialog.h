@@ -18,17 +18,21 @@ public:
     ~ChartPointDialog();
 
     void SetValues(ChartPoint*);
+    inline QString GetLabel(){ return _label; }
+    inline float GetValue() { return _value; }
+    inline QColor GetColor() { return _color; }
 
 private slots:
     void on_pushButton_clicked();
+    void on_txtValue_textChanged(const QString &arg1);
+    void on_txtLabel_textChanged(const QString &arg1);
 
 private:
     Ui::ChartPointDialog *ui;
 
-    ChartPoint* _pt;
-    QString _oldLabel;
-    float _oldValue;
-    QColor _oldColor;
+    QString _label;
+    float _value;
+    QColor _color;
 };
 
 #endif // CHARTPOINTDIALOG_H

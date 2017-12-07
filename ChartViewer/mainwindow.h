@@ -17,6 +17,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    //ChartDoc chartDoc;
+
 private slots:
     void on_actionLoad_triggered();
     void on_actionSave_triggered();

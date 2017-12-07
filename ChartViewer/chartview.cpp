@@ -2,7 +2,7 @@
 
 ChartView::ChartView(QWidget *parent) : QWidget(parent)
 {
-
+    connect(&chartDoc,SIGNAL(chartDataChanged()),this,SLOT(onChartDataChanged()));
 }
 
 void ChartView::onChartDataChanged()
@@ -28,15 +28,14 @@ void ChartView::mouseDoubleClickEvent(QMouseEvent *e)
     ChartPointDialog dlg;
     int count = 0;
     if(chartDoc.getSize() != 1){
-        int xCoord = e->pos().x(), start = 210, count = 0;
+        int xCoord = e->pos().x(), start = 210;
         while(xCoord > start && count < chartDoc.getSize()-1){
             start+=160;
             count++;
         }
     }
     dlg.SetValues(chartDoc.getPoint(count));
-    if(dlg.exec() == QDialog::Accepted){
-        this->update();
-    }
+    if(dlg.exec() == QDialog::Accepted)
+        chartDoc.ChangePoint(count, dlg.GetLabel(),dlg.GetValue(),dlg.GetColor());
 
 }

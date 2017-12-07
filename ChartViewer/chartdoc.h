@@ -16,7 +16,9 @@ public:
     void loadChartFromFile(QString);
     void saveChartToFile(QString);
     void Draw(QPainter&);
-    inline int getSize(){ return _points.size(); }
+
+    void ChangePoint(int, QString, float, QColor);
+    inline int getSize(){ return m_points.size(); }
     float getMaxValue();
     ChartPoint *getPoint(int);
 
@@ -26,7 +28,7 @@ signals:
 public slots:
 
 private:
-    QList<ChartPoint*> _points;
+    QList<ChartPoint*> m_points;
 
 };
 
