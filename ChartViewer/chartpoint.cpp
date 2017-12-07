@@ -2,5 +2,27 @@
 
 ChartPoint::ChartPoint()
 {
+   _value = 0;
+}
 
+ChartPoint::ChartPoint(QString label, float value, QColor color)
+{
+    _label = label;
+    _value = value;
+    _color = color;
+}
+
+void ChartPoint::SetLabel(QString label)
+{
+    _label = label;
+}
+
+void ChartPoint::SetValue(float value)
+{
+    _value = value;
+}
+
+void ChartPoint::SetColor(QColor color)
+{
+    _color = color;
 }
