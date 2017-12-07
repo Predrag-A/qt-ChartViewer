@@ -28,13 +28,18 @@ SOURCES += \
         mainwindow.cpp \
     chartpoint.cpp \
     chartdoc.cpp \
-    chartview.cpp
+    chartview.cpp \
+    chartpointdialog.cpp
 
 HEADERS += \
         mainwindow.h \
     chartpoint.h \
     chartdoc.h \
-    chartview.h
+    chartview.h \
+    chartpointdialog.h
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
