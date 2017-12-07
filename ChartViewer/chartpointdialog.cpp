@@ -27,7 +27,7 @@ void ChartPointDialog::SetValues(ChartPoint *pt)
 
 void ChartPointDialog::on_pushButton_clicked()
 {
-    QColor color = QColorDialog::getColor(Qt::white,this);
+    QColor color = QColorDialog::getColor(_color,this);
     ui->txtColor->setText(color.name());
     _color=color;
 }

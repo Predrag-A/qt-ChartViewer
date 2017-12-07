@@ -58,7 +58,7 @@ void ChartDoc::Draw(QPainter& p)
     }
     for(int i=0;i<11;i++){
         p.drawLine(25, i*40+50, 50, i*40+50);
-        p.drawText(5, i*40+40, QString::number(max - max*i/10));
+        p.drawText(5, i*40+45, QString::number(max - max*i/10));
     }
 
 }
@@ -84,5 +84,6 @@ void ChartDoc::ChangePoint(int index, QString label, float value, QColor color)
     m_points[index]->SetLabel(label);
     m_points[index]->SetColor(color);
     m_points[index]->SetValue(value);
+
     emit chartDataChanged();
 }

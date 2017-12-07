@@ -12,7 +12,7 @@ class ChartView : public QWidget
     Q_OBJECT
 public:
     explicit ChartView(QWidget *parent = nullptr);
-    ChartDoc chartDoc;
+    ChartDoc* ptr;
 
 signals:
 

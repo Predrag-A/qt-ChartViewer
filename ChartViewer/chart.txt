@@ -1,4 +1,4 @@
-LG,90,#00ff00
+Hp,90,#00ff00
 Canon,10,#ff00ff
 Xerox,50,#0000ff
 Epson,40,#ffff00
