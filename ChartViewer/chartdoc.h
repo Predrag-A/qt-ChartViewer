@@ -15,7 +15,8 @@ public:
 
     void loadChartFromFile(QString);
     void saveChartToFile(QString);
-    void Draw(QPainter&);
+    void Draw2D(QPainter&);
+    void Draw3D(QPainter&);
 
     void ChangePoint(int, QString, float, QColor);
     inline int getSize(){ return m_points.size(); }

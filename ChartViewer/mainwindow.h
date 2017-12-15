@@ -21,6 +21,10 @@ private slots:
     void on_actionLoad_triggered();
     void on_actionSave_triggered();
 
+    void on_action2D_triggered();
+
+    void on_action3D_triggered();
+
 private:
     Ui::MainWindow *ui;
     ChartDoc m_chartDoc;

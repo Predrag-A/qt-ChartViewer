@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->centralWidget->ptr = &m_chartDoc;
-     connect(&m_chartDoc,SIGNAL(chartDataChanged()),ui->centralWidget,SLOT(onChartDataChanged()));
+    connect(&m_chartDoc,SIGNAL(chartDataChanged()),ui->centralWidget,SLOT(onChartDataChanged()));
 
 }
 
@@ -34,4 +34,16 @@ void MainWindow::on_actionSave_triggered()
     {
         m_chartDoc.saveChartToFile(filePath);
     }
+}
+
+void MainWindow::on_action2D_triggered()
+{
+    ui->centralWidget->view3D = false;
+    emit m_chartDoc.chartDataChanged();
+}
+
+void MainWindow::on_action3D_triggered()
+{
+    ui->centralWidget->view3D = true;
+    emit m_chartDoc.chartDataChanged();
 }

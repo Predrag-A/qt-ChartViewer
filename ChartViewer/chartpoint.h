@@ -20,7 +20,8 @@ public:
     inline float GetValue(){ return _value; }
     inline QColor GetColor(){ return _color; }
 
-    void DrawPoint(QPainter&, int, float);
+    void DrawPoint2D(QPainter&, int, float);
+    void DrawPoint3D(QPainter&, int, float);
 
 private:
     QString _label;

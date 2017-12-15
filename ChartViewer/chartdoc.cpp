@@ -1,4 +1,5 @@
 #include "chartdoc.h"
+#include "QFile"
 
 ChartDoc::ChartDoc(QObject *parent) : QObject(parent)
 {
@@ -29,6 +30,7 @@ void ChartDoc::loadChartFromFile(QString filePath)
     }
 
     f.close();
+    emit chartDataChanged();
 }
 
 void ChartDoc::saveChartToFile(QString filePath)
@@ -47,20 +49,31 @@ void ChartDoc::saveChartToFile(QString filePath)
 
 }
 
-void ChartDoc::Draw(QPainter& p)
+void ChartDoc::Draw2D(QPainter& p)
 {
     if(m_points.size() == 0)
         return;
     float max = getMaxValue();
     for(int i=0;i<m_points.size();i++){
         float percent = m_points[i]->GetValue()/max;
-        m_points[i]->DrawPoint(p, i, percent);
+        m_points[i]->DrawPoint2D(p, i, percent);
     }
     for(int i=0;i<11;i++){
-        p.drawLine(25, i*40+50, 50, i*40+50);
+        p.drawLine(15, i*40+50, 50, i*40+50);
         p.drawText(5, i*40+45, QString::number(max - max*i/10));
     }
 
+}
+
+void ChartDoc::Draw3D(QPainter& p)
+{
+    if(m_points.size() == 0)
+        return;
+    float max = getMaxValue();
+    for(int i=m_points.size()-1;i>=0;i--){
+        float percent = m_points[i]->GetValue()/max;
+        m_points[i]->DrawPoint3D(p, i, percent);
+    }
 }
 
 float ChartDoc::getMaxValue()

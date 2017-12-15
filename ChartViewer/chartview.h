@@ -13,6 +13,7 @@ class ChartView : public QWidget
 public:
     explicit ChartView(QWidget *parent = nullptr);
     ChartDoc* ptr;
+    bool view3D;
 
 signals:
 

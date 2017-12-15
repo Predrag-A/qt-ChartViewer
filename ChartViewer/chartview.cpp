@@ -2,7 +2,7 @@
 
 ChartView::ChartView(QWidget *parent) : QWidget(parent)
 {
-
+    view3D = false;
 }
 
 void ChartView::onChartDataChanged()
@@ -15,10 +15,14 @@ void ChartView::paintEvent(QPaintEvent *e)
     QPainter p(this);
     QFont font("Helvetica");
     font.setPixelSize(20);
-    p.setRenderHint(QPainter::Antialiasing);
     p.setFont(font);
+    p.setRenderHint(QPainter::Antialiasing);
+    p.fillRect(rect(),Qt::white);
 
-    ptr->Draw(p);
+    if(view3D)
+        ptr->Draw3D(p);
+    else
+        ptr->Draw2D(p);
 }
 
 void ChartView::mouseDoubleClickEvent(QMouseEvent *e)
